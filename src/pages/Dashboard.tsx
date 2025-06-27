@@ -2,47 +2,50 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Clock, Calendar, FileText } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Dashboard = () => {
+  const { t } = useLanguage();
+
   const stats = [
     {
-      title: "Total Employees",
+      title: t('totalEmployees'),
       value: "142",
       change: "+12%",
       icon: Users,
       color: "text-blue-600",
-      bgColor: "bg-blue-100",
+      bgColor: "bg-blue-100 dark:bg-blue-900/50",
     },
     {
-      title: "Pending Leave Requests",
+      title: t('pendingLeaveRequests'),
       value: "8",
       change: "-4%",
       icon: Clock,
       color: "text-yellow-600",
-      bgColor: "bg-yellow-100",
+      bgColor: "bg-yellow-100 dark:bg-yellow-900/50",
     },
     {
-      title: "Active Departments",
+      title: t('activeDepartments'),
       value: "3",
       change: "0%",
       icon: Calendar,
       color: "text-green-600",
-      bgColor: "bg-green-100",
+      bgColor: "bg-green-100 dark:bg-green-900/50",
     },
     {
-      title: "Documents",
+      title: t('documents'),
       value: "24",
       change: "+8%",
       icon: FileText,
       color: "text-purple-600",
-      bgColor: "bg-purple-100",
+      bgColor: "bg-purple-100 dark:bg-purple-900/50",
     },
   ];
 
   const departmentData = [
-    { name: "IT Department", employees: 45, color: "#3b82f6" },
-    { name: "HR Department", employees: 32, color: "#10b981" },
-    { name: "Operations", employees: 65, color: "#f59e0b" },
+    { name: t('itDepartment'), employees: 45, color: "#3b82f6" },
+    { name: t('hrDepartment'), employees: 32, color: "#10b981" },
+    { name: t('operations'), employees: 65, color: "#f59e0b" },
   ];
 
   const monthlyData = [
@@ -64,21 +67,21 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Dashboard Overview</h2>
-        <p className="text-gray-600">Monitor your company's key metrics and activities</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('dashboardOverview')}</h2>
+        <p className="text-gray-600 dark:text-gray-400">{t('monitorMetrics')}</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow">
+          <Card key={index} className="hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
-                  <p className={`text-sm mt-1 ${stat.change.startsWith('+') ? 'text-green-600' : stat.change.startsWith('-') ? 'text-red-600' : 'text-gray-600'}`}>
-                    {stat.change} from last month
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{stat.title}</p>
+                  <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">{stat.value}</p>
+                  <p className={`text-sm mt-1 ${stat.change.startsWith('+') ? 'text-green-600' : stat.change.startsWith('-') ? 'text-red-600' : 'text-gray-600 dark:text-gray-400'}`}>
+                    {stat.change} {t('fromLastMonth')}
                   </p>
                 </div>
                 <div className={`p-3 rounded-full ${stat.bgColor}`}>
@@ -92,9 +95,9 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Department Distribution */}
-        <Card>
+        <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>Department Distribution</CardTitle>
+            <CardTitle className="dark:text-white">{t('departmentDistribution')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -119,17 +122,24 @@ const Dashboard = () => {
         </Card>
 
         {/* Monthly Leave Requests */}
-        <Card>
+        <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>Monthly Leave Requests</CardTitle>
+            <CardTitle className="dark:text-white">{t('monthlyLeaveRequests')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={monthlyData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis dataKey="month" stroke="#9CA3AF" />
+                <YAxis stroke="#9CA3AF" />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: 'rgba(31, 41, 55, 0.8)', 
+                    border: '1px solid #374151',
+                    borderRadius: '8px',
+                    color: '#F3F4F6'
+                  }} 
+                />
                 <Bar dataKey="leaves" fill="#3b82f6" />
               </BarChart>
             </ResponsiveContainer>
@@ -138,22 +148,22 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Activity */}
-      <Card>
+      <Card className="dark:bg-gray-800 dark:border-gray-700">
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
+          <CardTitle className="dark:text-white">{t('recentActivity')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {recentActivity.map((activity, index) => (
-              <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+              <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
                   {activity.user.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">{activity.user}</p>
-                  <p className="text-sm text-gray-600">{activity.action}</p>
+                  <p className="font-medium text-gray-900 dark:text-white">{activity.user}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{activity.action}</p>
                 </div>
-                <div className="text-sm text-gray-500">{activity.time}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">{activity.time}</div>
               </div>
             ))}
           </div>
