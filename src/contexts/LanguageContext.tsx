@@ -44,6 +44,63 @@ const translations = {
     hours: 'hours',
     eightHourShifts: '8-hour shifts',
     
+    // Leave Request
+    requestLeave: 'Request Leave',
+    leaveType: 'Leave Type',
+    startDate: 'Start Date',
+    endDate: 'End Date',
+    reason: 'Reason',
+    submitRequest: 'Submit Request',
+    vacation: 'Vacation',
+    sick: 'Sick Leave',
+    personal: 'Personal',
+    emergency: 'Emergency',
+    
+    // Leave Management
+    manageLeaveRequests: 'Manage Leave Requests',
+    employee: 'Employee',
+    status: 'Status',
+    actions: 'Actions',
+    pending: 'Pending',
+    approved: 'Approved',
+    rejected: 'Rejected',
+    approve: 'Approve',
+    reject: 'Reject',
+    
+    // Employee Management
+    employeeManagement: 'Employee Management',
+    addEmployee: 'Add Employee',
+    name: 'Name',
+    email: 'Email',
+    position: 'Position',
+    department: 'Department',
+    joinDate: 'Join Date',
+    edit: 'Edit',
+    delete: 'Delete',
+    
+    // Documents
+    companyDocuments: 'Company Documents',
+    documentName: 'Document Name',
+    type: 'Type',
+    uploadDate: 'Upload Date',
+    download: 'Download',
+    
+    // Company Settings
+    companySettingsTitle: 'Company Settings',
+    general: 'General',
+    companyName: 'Company Name',
+    address: 'Address',
+    phone: 'Phone',
+    save: 'Save',
+    
+    // Profile & Security
+    profile: 'Profile',
+    security: 'Security',
+    logout: 'Logout',
+    changePassword: 'Change Password',
+    twoFactorAuth: 'Two-Factor Authentication',
+    backupEmail: 'Backup Email',
+    
     // Common
     welcomeBack: 'Welcome back, Admin',
     language: 'Language',
@@ -97,6 +154,63 @@ const translations = {
     shiftPattern: 'Modèle d\'Équipe',
     hours: 'heures',
     eightHourShifts: 'Équipes de 8 heures',
+    
+    // Leave Request
+    requestLeave: 'Demander un Congé',
+    leaveType: 'Type de Congé',
+    startDate: 'Date de Début',
+    endDate: 'Date de Fin',
+    reason: 'Raison',
+    submitRequest: 'Soumettre la Demande',
+    vacation: 'Vacances',
+    sick: 'Congé Maladie',
+    personal: 'Personnel',
+    emergency: 'Urgence',
+    
+    // Leave Management
+    manageLeaveRequests: 'Gérer les Demandes de Congé',
+    employee: 'Employé',
+    status: 'Statut',
+    actions: 'Actions',
+    pending: 'En Attente',
+    approved: 'Approuvé',
+    rejected: 'Rejeté',
+    approve: 'Approuver',
+    reject: 'Rejeter',
+    
+    // Employee Management
+    employeeManagement: 'Gestion des Employés',
+    addEmployee: 'Ajouter un Employé',
+    name: 'Nom',
+    email: 'Email',
+    position: 'Poste',
+    department: 'Département',
+    joinDate: 'Date d\'Embauche',
+    edit: 'Modifier',
+    delete: 'Supprimer',
+    
+    // Documents
+    companyDocuments: 'Documents de l\'Entreprise',
+    documentName: 'Nom du Document',
+    type: 'Type',
+    uploadDate: 'Date de Téléchargement',
+    download: 'Télécharger',
+    
+    // Company Settings
+    companySettingsTitle: 'Paramètres de l\'Entreprise',
+    general: 'Général',
+    companyName: 'Nom de l\'Entreprise',
+    address: 'Adresse',
+    phone: 'Téléphone',
+    save: 'Sauvegarder',
+    
+    // Profile & Security
+    profile: 'Profil',
+    security: 'Sécurité',
+    logout: 'Déconnexion',
+    changePassword: 'Changer le Mot de Passe',
+    twoFactorAuth: 'Authentification à Deux Facteurs',
+    backupEmail: 'Email de Secours',
     
     // Common
     welcomeBack: 'Bienvenue, Admin',

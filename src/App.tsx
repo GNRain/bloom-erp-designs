@@ -15,6 +15,8 @@ import LeaveManagement from "./pages/LeaveManagement";
 import Employee from "./pages/Employee";
 import Documents from "./pages/Documents";
 import CompanySettings from "./pages/CompanySettings";
+import Profile from "./pages/Profile";
+import Security from "./pages/Security";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +39,8 @@ const App = () => (
                   <Route path="employee" element={<Employee />} />
                   <Route path="documents" element={<Documents />} />
                   <Route path="company-settings" element={<CompanySettings />} />
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="security" element={<Security />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>

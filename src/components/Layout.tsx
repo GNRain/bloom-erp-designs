@@ -3,14 +3,24 @@ import { Outlet } from "react-router-dom";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Moon, Sun, Globe } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Moon, Sun, Globe, User, Shield, LogOut } from "lucide-react";
 import { AppSidebar } from "@/components/AppSidebar";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Add logout logic here
+    console.log("Logging out...");
+    // For now, just refresh the page or navigate to login
+    window.location.reload();
+  };
 
   return (
     <div className="min-h-screen flex w-full bg-gray-50 dark:bg-gray-900">
@@ -47,9 +57,41 @@ const Layout = () => {
             </Button>
             
             <div className="text-sm text-gray-600 dark:text-gray-400">{t('welcomeBack')}</div>
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
-              A
-            </div>
+            
+            {/* Profile Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="relative">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium cursor-pointer hover:bg-blue-700 transition-colors">
+                    A
+                  </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                <DropdownMenuItem 
+                  onClick={() => navigate('/profile')}
+                  className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  <span>{t('profile')}</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => navigate('/security')}
+                  className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <Shield className="mr-2 h-4 w-4" />
+                  <span>{t('security')}</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="bg-gray-200 dark:bg-gray-600" />
+                <DropdownMenuItem 
+                  onClick={handleLogout}
+                  className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-400"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>{t('logout')}</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
         <main className="flex-1 p-6 bg-gray-50 dark:bg-gray-900">
